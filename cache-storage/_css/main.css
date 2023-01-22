@@ -1,4 +1,4 @@
-@charset "UTF-8";
+@charset 'UTF-8';
 
 /*style sheet for Explore California
 
@@ -78,7 +78,7 @@ html, body {
 
 body {
 	text-align:center;
-	font:100% DroidSerif, Georgia, "Times New Roman", Times, serif;
+	font:100% DroidSerif, Georgia, 'Times New Roman', Times, serif;
 	background: #3C6B92;
 	background: -moz-linear-gradient(top, #3c6b92 15%, #e1d8b9 90%); 
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(15%,#3c6b92), color-stop(90%,#e1d8b9)); 
@@ -301,7 +301,7 @@ span.accent {
 	border-bottom: none;
 }
 #siteNav li a:link span.tagline, #siteNav li a:visited span.tagline{
-	font: italic .8em DroidSerif, Georgia, "Times New Roman", Times, serif;
+	font: italic .8em DroidSerif, Georgia, 'Times New Roman', Times, serif;
 	color: #fff;
 	text-transform: none;
 	padding-top: .5em;
@@ -386,7 +386,7 @@ span.accent {
 	float: left;
 }
 #mainContent #mainArticle pre {
-	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-family: 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
 	font-size: .9em;
 	padding: 25px;
 	background: #eee;
@@ -496,7 +496,7 @@ span.accent {
 }
 #mainContent .tourDescription h3.price {
 	font-size: 1.2em;
-	font-family: DroidSerif, Georgia, "Times New Roman", Times, serif;
+	font-family: DroidSerif, Georgia, 'Times New Roman', Times, serif;
 	color: #666;
 	font-weight: normal;
 	font-style: italic;
@@ -730,7 +730,7 @@ span.accent {
 	margin-top: 10px;
 	font-size: 1.2em;
 }
-#mainContent input[type="text"], #mainContent input[type="email"],#mainContent input[type="password"],#mainContent input[type="tel"],#mainContent input[type="url"]{
+#mainContent input[type='text'], #mainContent input[type='email'],#mainContent input[type='password'],#mainContent input[type='tel'],#mainContent input[type='url']{
 	width: 350px;
 	padding-right: 25px;
 }
