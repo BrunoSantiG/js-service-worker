@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<title>First Service Worker</title>
+<h1>Service Worker Test</h1>
+
+<output></output>
+
+<button onclick='update()'>Update Check</button>
+<button onclick='unregister()'>Unregister SW</button>
+
+<script>
+  //call update at the sw registration
+  function update(){
+    navigator.serviceWorker.getRegistration()
+      .then(registration => {
+        registration.update()
+      })
+      .catch(err => {
+        console.log('error getting registration')
+      })
+  }
+
+  //call unregister at the sw registration
+  function unregister(){
+    navigator.serviceWorker.getRegistration()
+      .then(registration => {
+        registration.unregister()
+      })
+      .catch(err => {
+        console.log('error getting registration')
+      })
+  }
+
+
+  // Registrate the SW
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('serviceworker.js',{
+      scope: '/'
+    })
+      .then(registration => {
+        document.querySelector('output').innerHTML = 'SW it is Registered Properly'
+      })
+      .catch(err => {
+        document.querySelector('output').innerHTML = 'SW it is NOT Registered'
+      })
+  }else{
+    document.querySelector('output').innerHTML = 'SW NOT Available'
+  }
+
+  // Check if there is an update in the SW registration
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.getRegistration()
+      .then(registration => {
+        registration.addEventListener('updatefound', e => {
+          const swInstalling = registration.installing
+
+          swInstalling.addEventListener('statechange', () => {
+            if(swInstalling.state === 'installed'){
+              document.querySelector('output').innerHTML = 'A new SW is now installed'
+            }else{
+              document.querySelector('output').innerHTML = 'A new SW is controlling the page'
+            }
+          })
+        })
+      })
+      .catch(err => {
+        console.log('error getting registration')
+      })
+  }
+
+
+</script>
