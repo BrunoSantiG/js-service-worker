@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <title>First Service Worker</title>
 <h1>Service Worker Test</h1>
+<link rel='stylesheet' href='style.css'>
 
 <output></output>
 
 <button onclick='update()'>Update Check</button>
 <button onclick='unregister()'>Unregister SW</button>
+<button onclick='postData()'>Post Data</button>
 
 <script>
+
+
+  //Fetch some data
+  function postData(){
+    fetch('/api/data', {
+      method: 'POST',
+      body: {
+        data: ['Brazil', 'China', 'Italy']
+      }
+    })
+  }
+
   //call update at the sw registration
   function update(){
     navigator.serviceWorker.getRegistration()
