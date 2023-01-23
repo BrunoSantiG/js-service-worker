@@ -1,4 +1,4 @@
-const mockedName = ['BH', 'SP', 'RJ']
+const mockedName = ['San Diego', 'Sacramento', 'Fresno']
 
 window.addEventListener('load', () => {
     document.querySelector('ul#weather').innerHTML = '';
@@ -7,10 +7,16 @@ window.addEventListener('load', () => {
             responses.forEach((response,index) => {
                 response.json()
                     .then(data => {
-                        const sortedData = data.sort((a,b)=>a-b)
-                        const li = `<li>${mockedName[index]}: 
-                                ${sortedData[0]}C -
-                                ${sortedData[1]}C</li>`;
+                        let li
+                        if(data[0].error){
+                            li = `<li>Offiline</li>`
+                        }else{
+                            const sortedData = data.sort((a,b)=>a-b)
+                            li = `<li>${mockedName[index]}: 
+                            ${sortedData[0]}C -
+                            ${sortedData[1]}C</li>`;
+                        }
+                            
                         document.querySelector('ul#weather').innerHTML += li;
                     })
             })
@@ -18,5 +24,7 @@ window.addEventListener('load', () => {
 });
 
 function fetchWeather() {
-    return fetch('https://www.randomnumberapi.com/api/v1.0/random?min=0&max=40&count=2');
+    return fetch('https://www.randomnumberapi.com/api/v1.0/random?min=0&max=40&count=2').catch(err=> {
+        document.querySelector('ul#weather').innerHTML += `<li>Offline</li>`
+    });
 }
